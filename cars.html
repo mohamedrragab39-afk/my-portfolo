@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض محمد للسيارات | الفخامة والترخيص الموثوق</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تنسيقات برمجية نظيفة - Clean Code */
+        :root {
+            --main-color: #d4af37; /* ذهبي ملكي */
+            --dark-color: #111111;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: #333;
+        }
+
+        /* الهيدر */
+        header {
+            background: var(--dark-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--main-color);
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo span { color: var(--main-color); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li { margin: 0 15px; }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--main-color); }
+
+        /* سكشن الترحيب */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 30px; }
+
+        /* مميزات المتجر - كلام حقيقي */
+        .features {
+            padding: 50px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background: var(--white);
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover { border-color: var(--main-color); transform: translateY(-5px); }
+        .feature-box h3 { color: var(--main-color); margin-bottom: 10px; }
+
+        /* سكشن السيارات */
+        .cars-container { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+
+        .card-content { padding: 20px; }
+        .card-content h3 { margin-bottom: 10px; }
+        .card-content ul { 
+            list-style: none; 
+            font-size: 0.9rem; 
+            color: #666; 
+            margin-bottom: 15px;
+        }
+
+        .price { 
+            color: var(--main-color); 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            display: block; 
+            margin-bottom: 15px; 
+        }
+
+        .btn-contact {
+            display: block;
+            text-align: center;
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-contact:hover { background: var(--main-color); }
+
+        /* أزرار التواصل العائمة */
+        .float-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 2000;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .whatsapp { background: #25d366; }
+        .call { background: #007bff; }
+
+        footer {
+            background: var(--dark-color);
+            color: #888;
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">معرض <span>محمد</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">لماذا نحن؟</a></li>
+                <li><a href="#cars">المعروض</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>اختيارك الأول للتميز</h1>
+        <p>نحن في معرض محمد نوفر لك صفوة السيارات الألمانية واليابانية، كسر زيرو وحالات نادرة، مع إمكانية الفحص في أي مركز معتمد.</p>
+        <a href="#cars" class="btn-contact" style="padding: 15px 40px; background: var(--main-color);">تصفح المخزون الآن</a>
+    </section>
+
+    <section id="about" class="features">
+        <div class="feature-box">
+            <h3>فحص شامل</h3>
+            <p>جميع سياراتنا تخضع لفحص دقيق يشمل 150 نقطة فنية لضمان سلامة الموتور والعفشة والدهانات.</p>
+        </div>
+        <div class="feature-box">
+            <h3>تسهيلات بنكية</h3>
+            <p>بنتعامل مع كبرى البنوك وشركات التقسيط لتوفير أقل مقدم وأطول فترة سداد لعملائنا.</p>
+        </div>
+        <div class="feature-box">
+            <h3>أمان ومصداقية</h3>
+            <p>عقود بيع موثقة، ونقل ملكية سريع، وتاريخ صيانة كامل لمعظم السيارات المتاحة.</p>
+        </div>
+    </section>
+
+    <section id="cars" class="cars-container">
+        <h2 class="section-title">أحدث عروض الأسبوع</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=80" alt="BMW">
+                <div class="card-content">
+                    <h3>BMW 520i - Luxury Line</h3>
+                    <ul>
+                        <li>موديل: 2023</li>
+                        <li>المسافة: 15,000 كم</li>
+                        <li>الحالة: فبريكا بالكامل</li>
+                    </ul>
+                    <span class="price">اتصل لمعرفة السعر</span>
+                    <a href="https://wa.me/201276422358" class="btn-contact">طلب معاينة</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="Mercedes">
+                <div class="card-content">
+                    <h3>Mercedes E200 - AMG</h3>
+                    <ul>
+                        <li>موديل: 2022</li>
+                        <li>المسافة: 28,000 كم</li>
+                        <li>المواصفات: بانوراما، كاميرا 360</li>
+                    </ul>
+                    <span class="price">سعر خاص للكاش</span>
+                    <a href="https://wa.me/201276422358" class="btn-contact">طلب معاينة</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=600&q=80" alt="Toyota">
+                <div class="card-content">
+                    <h3>Toyota Fortuner - V6</h3>
+                    <ul>
+                        <li>موديل: 2024</li>
+                        <li>المسافة: 0 كم (زيرو)</li>
+                        <li>الدفع: رباعي 4x4</li>
+                    </ul>
+                    <span class="price">تسليم فوري</span>
+                    <a href="tel:01276422358" class="btn-contact">اتصل الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; padding: 60px 10%; background: #eee;">
+        <h2>زورنا في المعرض</h2>
+        <p style="margin: 15px 0;">نحن في انتظارك لمعاينة سيارة أحلامك على أرض الواقع</p>
+        <p><strong>الإيميل:</strong> mohamedrragab39@gmail.com</p>
+        <p><strong>العنوان:</strong> القاهرة، منطقة المعارض</p>
+    </section>
+
+    <div class="float-buttons">
+        <a href="https://wa.me/201276422358" class="float-btn whatsapp" target="_blank">واتساب</a>
+        <a href="tel:01276422358" class="float-btn call">اتصال</a>
+    </div>
+
+    <footer>
+        <p>معرض محمد للسيارات &copy; 2024 - بيع | شراء | استبدال</p>
+    </footer>
+
+</body>
+</html>

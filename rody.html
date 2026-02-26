@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rody Store | عالم الإكسسوارات الخيالي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@700&family=Cairo:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #ff2d95;
+            --dark-space: #0b0e14;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-glow: 0 0 10px rgba(255, 45, 149, 0.8);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-space);
+            background-image: radial-gradient(circle at center, #1a1a2e 0%, #0b0e14 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header - Logo on the Side */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 2px solid var(--neon-pink);
+        }
+
+        .logo {
+            font-family: 'Aref Ruqaa Ink', serif;
+            font-size: 35px;
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+            cursor: pointer;
+        }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a {
+            color: #fff; text-decoration: none; font-weight: bold;
+            transition: 0.3s; font-size: 1.1rem;
+        }
+        nav ul li a:hover { color: var(--neon-pink); text-shadow: var(--text-glow); }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1470') center/cover;
+            position: relative;
+        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { 
+            font-size: 4.5rem; 
+            font-family: 'Aref Ruqaa Ink', serif; 
+            color: var(--neon-pink);
+            text-shadow: var(--text-glow);
+        }
+
+        /* Sections Styling */
+        .category-section { padding: 80px 5%; }
+        .section-header {
+            border-right: 5px solid var(--neon-pink);
+            padding-right: 20px;
+            margin-bottom: 40px;
+        }
+        .section-header h2 { font-size: 2.5rem; font-family: 'Aref Ruqaa Ink', serif; color: var(--neon-pink); }
+        .section-header p { color: #ccc; font-size: 1.1rem; }
+
+        /* Grid System */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .item-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 45, 149, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        .item-card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(255, 45, 149, 0.3);
+        }
+        .item-card img {
+            width: 100%; height: 300px;
+            object-fit: cover; border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .item-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--neon-pink); }
+        .item-card .specs { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; }
+        .price { font-size: 1.5rem; font-weight: 900; }
+
+        /* Order Box */
+        .order-container {
+            background: linear-gradient(45deg, #121212, #1f1f1f);
+            border: 2px solid var(--neon-pink);
+            border-radius: 30px;
+            padding: 50px; margin: 50px 5%;
+            box-shadow: var(--text-glow);
+        }
+        .order-container h2 { text-align: center; font-family: 'Aref Ruqaa Ink', serif; font-size: 3rem; margin-bottom: 30px; }
+
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input, select, textarea {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #444; padding: 15px;
+            color: white; border-radius: 10px; font-size: 1rem;
+        }
+        input:focus { border-color: var(--neon-pink); outline: none; }
+        button {
+            grid-column: span 2; padding: 20px;
+            background: var(--neon-pink); color: white;
+            font-size: 1.5rem; font-weight: 900; border: none;
+            border-radius: 10px; cursor: pointer; transition: 0.3s;
+        }
+        button:hover { box-shadow: var(--text-glow); transform: scale(1.02); }
+
+        /* Information Footer */
+        footer {
+            background: #000; padding: 60px 5%;
+            border-top: 1px solid #333;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .info-col h4 { color: var(--neon-pink); font-size: 1.5rem; margin-bottom: 20px; font-family: 'Aref Ruqaa Ink', serif; }
+        .info-col p { line-height: 1.8; color: #ccc; }
+
+        @media (max-width: 768px) {
+            form { grid-template-columns: 1fr; }
+            button { grid-column: span 1; }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Rody Store</div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#rings">الخواتم</a></li>
+                <li><a href="#watches">الساعات</a></li>
+                <li><a href="#bracelets">الأساور</a></li>
+                <li><a href="#contact">اتصلي بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>خيالك واقع هنا..</h1>
+            <p>أكبر تشكيلة إكسسوارات في مصر بلمسة سحرية</p>
+        </div>
+    </section>
+
+    <section class="category-section" id="rings">
+        <div class="section-header">
+            <h2>خواتم الأحلام 💍</h2>
+            <p>خواتم من الفضة الإيطالي والزركون النادر</p>
+        </div>
+        <div class="items-grid">
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80" alt="Ring">
+                <h3>خاتم النجم المتلألئ</h3>
+                <p class="specs">فضة عيار 925 - حجر زركون أصلي - مقاوم للصدأ</p>
+                <p class="price">450 EGP</p>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80" alt="Ring">
+                <h3>خاتم كوين روز</h3>
+                <p class="specs">طلي ذهب عيار 18 - تصميم إيطالي حصري</p>
+                <p class="price">320 EGP</p>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?q=80" alt="Ring">
+                <h3>توينز فخامة</h3>
+                <p class="specs">قطعتين متداخلتين - فصوص سواروفسكي</p>
+                <p class="price">600 EGP</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" id="watches" style="background: rgba(255, 45, 149, 0.02);">
+        <div class="section-header">
+            <h2>ساعات ملكية ⌚</h2>
+            <p>دقة ومظهر يخطف الأنظار في كل مناسبة</p>
+        </div>
+        <div class="items-grid">
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80" alt="Watch">
+                <h3>ساعة رولكس ستايل</h3>
+                <p class="specs">ماكينة ياباني - ستانلس ستيل - ضد الماء</p>
+                <p class="price">1,850 EGP</p>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?q=80" alt="Watch">
+                <h3>ساعة جالاكسي النسائية</h3>
+                <p class="specs">سير جلد طبيعي - ميناء مرصع بالنجوم</p>
+                <p class="price">980 EGP</p>
+            </div>
+            <div class="item-card">
+                <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80" alt="Watch">
+                <h3>ساعة كلاسيك سيلفر</h3>
+                <p class="specs">تصميم رفيع جداً - ضمان عام كامل</p>
+                <p class="price">1,200 EGP</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-container">
+        <h2>أكدي طلبك الآن ✨</h2>
+        <form>
+            <input type="text" placeholder="اسمك الكامل" required>
+            <input type="tel" placeholder="رقم الموبايل (واتساب)" required>
+            <input type="text" placeholder="المحافظة" required>
+            <select style="grid-column: span 1;">
+                <option>اختاري وسيلة الدفع</option>
+                <option>دفع عند الاستلام</option>
+                <option>فودافون كاش</option>
+            </select>
+            <textarea placeholder="اكتبي موديل المنتج أو أي ملاحظات إضافية" rows="4" style="grid-column: span 2;"></textarea>
+            <button type="submit">إرسال الطلب للخيال!</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <div class="info-col">
+            <h4>عن Rody Store</h4>
+            <p>نحن لسنا مجرد متجر، نحن بوابة لعالم من الجمال والأناقة. بدأنا في المقطم لنصل لكل بنت في مصر بقطع فريدة تحكي قصتها.</p>
+        </div>
+        <div class="info-col">
+            <h4>خدمة العملاء</h4>
+            <p>📍 المقر: المقطم - شارع تسعة - بجانب بلبن</p>
+            <p>📞 هاتف: 01222751570</p>
+            <p>🚚 شحن سريع خلال 48 ساعة فقط.</p>
+        </div>
+        <div class="info-col">
+            <h4>ساعات العمل</h4>
+            <p>يومياً من الساعة 12:00 ظهراً</p>
+            <p>حتى الساعة 11:00 مساءً</p>
+            <p style="margin-top: 10px; color: var(--neon-pink);">نحن بانتظار زيارتكم 🌸</p>
+        </div>
+    </footer>
+
+</body>
+</html>
